@@ -1,0 +1,16 @@
+.button-options{
+    display: block;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: white;
+}
+.button-bg-correct{
+    background-color: green
+}
+.button-bg-wrong{
+    background-color: red
+}
