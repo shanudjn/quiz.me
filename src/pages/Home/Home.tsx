@@ -1,15 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Card from "../../Components/Card/Card"
+import "tailwindcss/tailwind.css";
+import "./Home.css"
 
 
 function Home() {
     return (
-        <div>
-            <p>This is home page</p>
-            <Link to="/quiz/RDR">RDR Quiz</Link>
-            <Link to="/quiz/RDR2">RDR2 Quiz</Link>
-
-        </div>
+        <div className={`game-grid grid sm:grid-cols-1 md:grid-cols-2 gap-5 container mx-auto`}>
+            <Card quizname="Red Dead Redemption" numberOfQuestions={10} url="RDR" />
+            <Card quizname="Red Dead Redemption" numberOfQuestions={10} url="RDR2" />
+            <Card quizname="Red Dead Redemption" numberOfQuestions={10} url="RDR" />
+            <Card quizname="Red Dead Redemption" numberOfQuestions={10} url="RDR2" />
+        </div >
     )
 }
 

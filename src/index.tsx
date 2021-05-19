@@ -2,21 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
+
 import App from './App';
 import { DataProvider } from './Context/data-context'
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from "@chakra-ui/react"
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <DataProvider>
-        <Router>
-          <App />
-        </Router>
-      </DataProvider>
-    </ChakraProvider>
+    <DataProvider>
+      <Router>
+        <App />
+      </Router>
+    </DataProvider>
+
 
   </React.StrictMode>,
   document.getElementById('root')

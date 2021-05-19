@@ -5,13 +5,6 @@ import { quizReducer, initialState } from "../../Reducer/quiz-reducer"
 import { useQuizData } from '../../Context/data-context'
 import { Option, Question, Quiz } from '../../Data/data.types'
 import './Quiz.css';
-import { Button, ButtonGroup } from "@chakra-ui/react"
-
-
-
-
-
-
 
 
 function QuizPage() {
@@ -79,11 +72,11 @@ function QuizPage() {
         console.log("Changeing button color")
         if (option.isRight && option.optionId === optionId && isAnswered) {
 
-            return `button-bg-correct`
+            return `ring-1 ring-green-400`
         }
         if (!option.isRight && option.optionId === optionId && isAnswered) {
             console.log(optionId, option.optionId)
-            return `button-bg-wrong`
+            return `ring-1 ring-red-400`
         }
         return ''
     }
@@ -92,62 +85,69 @@ function QuizPage() {
 
 
     return (
-        <div>
-            <p>Here is the quiz</p>
-            <Link to="/"><button>Go Back</button></Link>
-            <p>Score : {state.score}</p>
+        <div className={`flex flex-col`}>
+            <div className={`flex sm:justify-around justify-between items-baseline m-4 p-4`}>
+                <Link to="/"><button className={`ring-1 ring-green-400 p-2 rounded text-sm`}>Go Back</button></Link>
+                <span>{quizLet.topicName}</span>
+                <span >Score : <span className={`text-bold text-3xl`}>{state.score}</span> </span>
+            </div>
+
+
             {
                 <>
-                    <p>{state.currentQuestionNumber}</p>
-                    <p>{quizLet.topicName}</p>
-                    <div>
-                        <p>{currentQuestion?.question}</p>
+                    <div className={``}>
+
+                        <div className="flex flex-col h-64 justify-between">
+                            <div className="">
+                                <p className={`text-lg font-semibold`}>{currentQuestion?.question}</p>
+                            </div>
+                            {!isAnswered && <div className={``}>
+                                {
+                                    currentQuestion?.options.map((option: Option) => {
+                                        return (
+                                            <div className="">
+                                                <button
+                                                    className={`bg-gray-100 sm:w-11/12 md:w-6/12 lg:w-1/2 m-2 p-1 bg-green-40 rounded`}
+                                                    key={option.optionId}
+                                                    onClick={() => { checkAnswer(option); }}
+                                                >{option.option}
+                                                </button>
+                                            </div>
+
+                                        )
+                                    })
+                                }
+                            </div>}
+                            {isAnswered && <div className={``}>
+                                {
+                                    currentQuestion?.options.map((option: Option) => {
+                                        return (
+                                            <div>
+                                                <button
+                                                    className={`bg-gray-100 sm:w-11/12 md:w-6/12 lg:w-1/2 m-2 p-1 bg-green-40 rounded ${getButtonClass(option, optionId)} `}
+                                                    key={option.optionId}
+                                                    onClick={() => checkAnswer(option)}
+                                                    disabled
+
+                                                >{option.option}
+                                                </button>
+                                            </div>
+
+                                        )
+                                    })
+                                }
+                            </div>
+                            }
+                        </div>
+                        {/* <button onClick={() => changeQuestion("PREVIOUS")}> Previous</button> */}
+                        <div className={`m-8 p-4 h-16`}><span className={`text-center`}>{state.message}</span></div>
+                        {
+                            (state.currentQuestionNumber < numberOfQuestions)
+                                ? <button className={`m-4 p-4 bg-green-400 text-white rounded w-48`} onClick={() => changeQuestion("NEXT")}>Next Question</button>
+                                : <Link to="/"><button className='m-4 p-4 bg-green-400 text-white text-white rounded w-48'>End Quiz</button></Link>
+                        }
+
                     </div>
-                    { !isAnswered && <div>
-                        {
-                            currentQuestion?.options.map((option: Option) => {
-                                return (
-                                    <div style={{ margin: "1rem" }}>
-                                        <button
-                                            className="button-options"
-                                            key={option.optionId}
-                                            onClick={() => { checkAnswer(option); }}
-
-                                        >{option.option}
-                                        </button>
-                                    </div>
-
-                                )
-                            })
-                        }
-                    </div>}
-                    { isAnswered && <div>
-                        {
-                            currentQuestion?.options.map((option: Option) => {
-                                return (
-                                    <div style={{ margin: "1rem" }}>
-                                        <button
-                                            className={`button-options ${getButtonClass(option, optionId)}`}
-                                            key={option.optionId}
-                                            onClick={() => checkAnswer(option)}
-                                            disabled
-
-                                        >{option.option}
-                                        </button>
-                                    </div>
-
-                                )
-                            })
-                        }
-                    </div>}
-                    {/* <Button onClick={() => changeQuestion("PREVIOUS")}> Previous</button> */}
-                    <div>{state.message}</div>
-                    {(state.currentQuestionNumber < numberOfQuestions)
-                        ? <button onClick={() => changeQuestion("NEXT")}>Next Question</button>
-                        : <Link to="/"><button>End Quiz</button></Link>
-                    }
-
-
                 </>
             }
         </div >

@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar'
 
 
+
 import './App.css';
 
 function App() {
@@ -14,7 +15,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/quiz/:topicId" element={<QuizPage />}></Route>
-
       </Routes>
     </div>
   );
