@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { useParams } from 'react-router';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { quizReducer, initialState } from "../../Reducer/quiz-reducer"
 import { useQuizData } from '../../Context/data-context'
 import { Option, Question, Quiz } from '../../Data/data.types'
@@ -144,7 +144,7 @@ function QuizPage() {
                         {
                             (state.currentQuestionNumber < numberOfQuestions)
                                 ? <button className={`m-4 p-4 bg-green-400 text-white rounded w-48`} onClick={() => changeQuestion("NEXT")}>Next Question</button>
-                                : <Link to="/"><button className='m-4 p-4 bg-green-400 text-white text-white rounded w-48'>End Quiz</button></Link>
+                                : <Link to={`/result/${topicId}/${state.score}`}><button className='m-4 p-4 bg-green-400 text-white text-white rounded w-48'>End Quiz</button></Link>
                         }
 
                     </div>
