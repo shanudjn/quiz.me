@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
         localStorage?.setItem("login", JSON.stringify({ isUserLogIn: true, token }))
     }
     async function loginService(username, password) {
-        const loginServiceResponce = await axios.post("http://localhost:8080/user/login", { username: username, password: password });
+        const loginServiceResponce = await axios.post("https://quiz-me-backend.herokuapp.com/user/login", { username: username, password: password });
         console.log(loginServiceResponce)
         return loginServiceResponce;
     }

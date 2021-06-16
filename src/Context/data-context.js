@@ -15,7 +15,7 @@ export function QuizProvider({ children }) {
     const [quizzes, setQuizzes] = useState("")
     async function getQuizData() {
         try {
-            const getQuizResponse = await axios.get("http://localhost:8080/quiz");
+            const getQuizResponse = await axios.get("https://quiz-me-backend.herokuapp.com/quiz");
             console.log(getQuizResponse.data.allQuiz);
             const quizzes = getQuizResponse.data.allQuiz;
             if (getQuizResponse.status === 200) {
