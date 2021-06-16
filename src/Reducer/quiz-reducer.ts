@@ -16,10 +16,7 @@ export function quizReducer(state: typeof initialState, action: ACTIONTYPE) {
         case "SET_QUESTION":
             console.log("reducer", action.payload)
             if (action.payload === "START" || action.payload === "NEXT") {
-
                 return { ...state, currentQuestionNumber: state.currentQuestionNumber + 1, message: "" };
-
-
             }
 
             return { ...state, currentQuestionNumber: 1, message: "" }

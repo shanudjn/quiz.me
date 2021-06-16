@@ -32,13 +32,13 @@ function QuizPage() {
 
 
 
-
+    console.log(topicId)
 
     function checkAnswer(option: Option) {
-        console.log("inside check answer", option)
+
 
         if (option.isRight) {
-            console.log("correct")
+
             if (!isAnswered) {
                 dispatch({ type: "CHANGE_SCORE", payload: "INCREASE" })
             }
@@ -48,7 +48,7 @@ function QuizPage() {
 
         }
         else {
-            console.log("wrong")
+
             if (!isAnswered) {
                 dispatch({ type: "CHANGE_SCORE", payload: "DECREASE" })
             }
@@ -61,7 +61,7 @@ function QuizPage() {
     }
 
     function changeQuestion(payload: string) {
-        console.log(payload)
+
         if (state.currentQuestionNumber >= 1 && state.currentQuestionNumber < numberOfQuestions)
             dispatch({ type: "SET_QUESTION", payload: payload })
         setIsAnswered(false)
@@ -69,13 +69,12 @@ function QuizPage() {
 
     }
     function getButtonClass(option: Option, optionId: number) {
-        console.log("Changeing button color")
-        if (option.isRight && option.optionId === optionId && isAnswered) {
 
+        if (option.isRight && option.optionId === optionId && isAnswered) {
             return `ring-1 ring-green-400`
         }
         if (!option.isRight && option.optionId === optionId && isAnswered) {
-            console.log(optionId, option.optionId)
+
             return `ring-1 ring-red-400`
         }
         return ''
@@ -83,7 +82,7 @@ function QuizPage() {
 
 
 
-
+    console.log(quizLet)
     return (
         <div className={`flex flex-col`}>
             <div className={`flex sm:justify-around justify-between items-baseline m-4 p-4`}>

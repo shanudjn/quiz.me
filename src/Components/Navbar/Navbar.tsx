@@ -11,7 +11,8 @@ function Navbar() {
                     <Link to="/"><span className="text-xl font-bold"><span className="text-green-400 text-3xl font-bold" >Q</span>uiz.me</span></Link>
                 </div>
                 <div className="links">
-                    <Link to=""><span>About</span></Link>
+                    {/* <Link to="/dashboard"><span className="pr-4 pl-4">Dashboard</span></Link> */}
+                    <Link to="/login"><span className="pr-4 pl-4">Login</span></Link>
                 </div>
             </div>
         </nav>

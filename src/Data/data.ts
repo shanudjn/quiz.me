@@ -1,7 +1,7 @@
 // import { v4 as uuid } from "uuid";
 import { Quizzes } from "./data.types"
 
-export const quizzes: Quizzes = [
+const quizzes: Quizzes = [
     {
         topicId: "RDR",
         topicName: "Red Dead Redemption",

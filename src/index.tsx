@@ -4,19 +4,21 @@ import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 
 import App from './App';
-import { DataProvider } from './Context/data-context'
+import { QuizProvider } from './Context/data-context'
+import { AuthProvider } from "./Context/auth-context";
 import reportWebVitals from './reportWebVitals';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataProvider>
-      <Router>
-        <App />
-      </Router>
-    </DataProvider>
-
+    <AuthProvider>
+      <QuizProvider>
+        <Router>
+          <App />
+        </Router>
+      </QuizProvider>
+    </AuthProvider>
 
   </React.StrictMode>,
   document.getElementById('root')
