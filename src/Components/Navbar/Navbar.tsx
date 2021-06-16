@@ -1,9 +1,11 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../Context/auth-context';
 
 
 function Navbar() {
+    const { isUserLoggedIn } = useAuth();
     return (
         <nav className="nav-container bg-white">
             <div className="navbar flex flex-row sm:justify-between md:justify-evenly items-baseline">
@@ -12,7 +14,7 @@ function Navbar() {
                 </div>
                 <div className="links">
                     {/* <Link to="/dashboard"><span className="pr-4 pl-4">Dashboard</span></Link> */}
-                    <Link to="/login"><span className="pr-4 pl-4">Login</span></Link>
+                    <Link to="/login"><span className="pr-4 pl-4">{isUserLoggedIn ? "Logout" : "Login"}</span></Link>
                 </div>
             </div>
         </nav>
