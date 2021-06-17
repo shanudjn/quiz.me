@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
+
 import App from './App';
+import { QuizProvider } from './Context/data-context'
+import { AuthProvider } from "./Context/auth-context";
 import reportWebVitals from './reportWebVitals';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <QuizProvider>
+        <Router>
+          <App />
+        </Router>
+      </QuizProvider>
+    </AuthProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

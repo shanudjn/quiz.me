@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import QuizPage from './pages/Quiz/Quiz';
+import Home from './pages/Home/Home';
+import Result from './pages/Result/Result'
+import Login from './pages/Login/Login';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar/Navbar'
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Dashboard from './pages/Dashboard/Dashboard'
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Login />} />
+        <PrivateRoute path={`/quiz/:topicId`} element={<QuizPage />} />
+        {/* <PrivateRoute path={`/dashboard`} element={<Dashboard />} /> */}
+
+        <Route path='/result/:topicId/:score' element={<Result />} />
+      </Routes>
     </div>
   );
 }

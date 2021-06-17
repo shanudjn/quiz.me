@@ -1,0 +1,9 @@
+.nav-container{
+    border-bottom : 2px solid hsl(0, 0%, 89%);
+}
+.navbar{
+   
+    margin : auto;
+    padding:1rem;
+    
+}
