@@ -1,7 +1,8 @@
 import React from 'react';
 import QuizPage from './pages/Quiz/Quiz';
 import Home from './pages/Home/Home';
-import Result from './pages/Result/Result'
+import Result from './pages/Result/Result';
+import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar'
@@ -17,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
         <PrivateRoute path={`/quiz/:topicId`} element={<QuizPage />} />
         {/* <PrivateRoute path={`/dashboard`} element={<Dashboard />} /> */}
 

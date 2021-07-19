@@ -16,7 +16,7 @@ export function QuizProvider({ children }) {
     async function getQuizData() {
         try {
             const getQuizResponse = await axios.get("https://quiz-me-backend.herokuapp.com/quiz");
-            console.log(getQuizResponse.data.allQuiz);
+
             const quizzes = getQuizResponse.data.allQuiz;
             if (getQuizResponse.status === 200) {
                 setQuizzes(quizzes)
@@ -30,7 +30,7 @@ export function QuizProvider({ children }) {
         getQuizData()
     }, [])
 
-    console.log({ quizzes })
+    // console.log({ quizzes })
     return (
         <QuizContext.Provider value={{ quizzes }}>
             {children}
