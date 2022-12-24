@@ -19,7 +19,7 @@ function Result() {
     async function saveScore() {
         console.log("save score")
         console.log(quizLet._id)
-        const saveScoreResponse = await axios.post('https://quiz-me-backend.herokuapp.com/user/', { userScore: { quizId: quizLet._id, score: score } }, { headers: { authorization: `Bearer ${token}` } });
+        const saveScoreResponse = await axios.post('https://quiz-me-backend.onrender.com/user/', { userScore: { quizId: quizLet._id, score: score } }, { headers: { authorization: `Bearer ${token}` } });
         console.log(saveScoreResponse)
     }
 

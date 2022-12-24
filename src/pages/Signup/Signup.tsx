@@ -18,7 +18,7 @@ function Signup() {
     async function signupService() {
         console.log(username, email, password)
         try {
-            const signupServiceResponse = await axios.post('https://quiz-me-backend.herokuapp.com/user/signup',
+            const signupServiceResponse = await axios.post('https://quiz-me-backend.onrender.com/user/signup',
                 {
                     user: {
                         username: username,
